@@ -1,4 +1,4 @@
-package authsecurity.controllers.dto;
+package authsecurity.dto;
 
 import java.util.List;
 

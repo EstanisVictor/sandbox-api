@@ -1,4 +1,4 @@
-package authsecurity.controllers.dto;
+package authsecurity.dto;
 
 public record CreateTweetDto(String content) {
 }

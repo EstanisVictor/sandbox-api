@@ -35,4 +35,5 @@ build/
 # Arquivos sensíveis
 *.key
 *.pem
+*.pub
 id_rsa

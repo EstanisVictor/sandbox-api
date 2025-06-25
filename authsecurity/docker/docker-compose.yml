@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: tweet
+    restart: unless-stopped
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: tweet
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tweet_net
+
+volumes:
+  postgres_data:
+
+networks:
+  tweet_net:
+    driver: bridge

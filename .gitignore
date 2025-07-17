@@ -40,8 +40,8 @@ id_rsa
 
 # Dependências do Node.js teste-wpp-bot
 teste-wpp-bot/node_modules
-
-/dist
+teste-wpp-bot/dist
+teste-wpp-bot/.wwebjs_auth
 
 # Logs
 npm-debug.log*
@@ -57,3 +57,5 @@ yarn-error.log*
 # Arquivos do sistema operacional
 .DS_Store
 Thumbs.db
+
+webhook_meta_api/node_modules

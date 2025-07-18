@@ -16,8 +16,16 @@ export class WhatsappController {
     return this.whatsappService.sendMessage(body.to, body.message);
   }
 
-
-  // A Meta faz um GET para verificar se seu webhook é válido
+  @Post('propose-appointment')
+  async propose(@Body() body: { to: string; patientName: string; details: string; date: string; time: string }) {
+      return this.whatsappService.proposeAppointment(
+          body.to, 
+          body.patientName, 
+          body.details, 
+          body.date, 
+          body.time
+      );
+  }
   @Get('webhook')
   verifyWebhook(
     @Query('hub.mode') mode: string,

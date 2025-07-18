@@ -44,4 +44,17 @@ export class WebApiProvider implements IWhatsAppProvider {
         this.logger.log(`Enviando mensagem para ${to}`);
         return this.client.sendMessage(to, message);
     }
+
+    async sendTemplateMessage(
+        to: string,
+        templateName: string,
+        languageCode: string,
+        components?: any[],
+    ): Promise<any> {
+        this.logger.log(`Enviando template ${templateName} para ${to}`);
+        // whatsapp-web.js does not support sending template messages directly.
+        // As a workaround, you can send a formatted text message instead.
+        const templateText = `Template: ${templateName}\nLanguage: ${languageCode}\n${components ? JSON.stringify(components) : ''}`;
+        return this.client.sendMessage(to, templateText);
+    }
 }

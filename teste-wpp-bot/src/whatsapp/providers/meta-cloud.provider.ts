@@ -53,4 +53,37 @@ export class MetaCloudProvider implements IWhatsAppProvider {
       throw error;
     }
   }
+
+  async sendTemplateMessage(
+    to: string, 
+    templateName: string, 
+    languageCode: string, 
+    components: any[]
+  ): Promise<any> {
+      try {
+        this.logger.log(`Enviando template ${templateName} para ${to}`);
+        const payload = {
+          messaging_product: 'whatsapp',
+          to: to,
+          type: 'template',
+          template: {
+            name: templateName,
+            language: {
+              code: languageCode,
+            },
+            components: components,
+          },
+        };
+        const response = await axios.post(this.apiUrl, payload, {
+          headers: {
+            Authorization: `Bearer ${this.apiToken}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        return response.data;
+      } catch (error) {
+        this.logger.error('Erro ao enviar template pela Meta API:', error.response?.data);
+        throw error;
+      }
+  }
 }

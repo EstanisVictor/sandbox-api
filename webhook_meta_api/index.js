@@ -30,7 +30,7 @@ app.get('/webhook', (req, res) => {
     }
 });
 
-app.post('/', (req, res) => {
+app.post('/webhook', (req, res) => {
     let body_param = req.body;
 
     const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
